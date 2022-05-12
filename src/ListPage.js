@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react/cjs/react.production.min';
 import { getRestaurants } from './services/fetch-utils';
+import { Link } from 'react-router-dom';
 
 export default function ListPage() {
   const [restaurants, setRestaurants] = useState([]);
@@ -14,8 +15,20 @@ export default function ListPage() {
 
     loadData();
   }, []);
-  
+
   return (
-    <div>ListPage</div>
+    <div>
+      {
+        restaurants.map((restaurant, i) => <Link key={restaurant.name + i} to={`/restaurants/${restaurant.id}`}>
+          <div className='restaurant-item'>
+            <p>{restaurant.name}</p>
+            <p>Type of Food: {restaurant.food_type}</p>
+            <p>Style: {restaurant.style}</p>
+            <p>Rating: {restaurant.rating}</p>
+            <p>Price: {restaurant.price}</p>
+          </div>
+        </Link>)
+      }
+    </div>
   );
 }

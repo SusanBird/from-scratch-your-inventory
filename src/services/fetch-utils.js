@@ -46,3 +46,22 @@ export async function getRestaurants() {
 
   return error || body;
 }
+
+export async function getRestaurantById(id) {
+  const { body, error } = await client
+    .from('Restaurants')
+    .select('*')
+    .match({ id })
+    .single();
+  
+  return error || body;
+}
+
+export async function updateRestaurant(id, newRestaurant) {
+  const { body, error } = await client
+    .from('Restaurants')
+    .update(newRestaurant)
+    .match({ id });
+
+  return error || body;
+}
