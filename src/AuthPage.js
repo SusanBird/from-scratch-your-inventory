@@ -53,25 +53,34 @@ export default function AuthPage({ setEmail, setToken }) {
         <h3>Sign Up</h3>
         <label>
             email
-          <input />
+          <input value={signUpEmail} onChange={e => setSignUpEmail(e.target.value)}/>
         </label>
         <label>
             password
-          <input />
+          <input type="password" value={signUpPassword} onChange={e => setSignUpPassword(e.target.value)}/>
         </label>
       </form>
     </div>
     <div>
-      <form>
+      <form onSubmit={handleSignIn}>
         <h3>Sign In</h3>
         <label>
             email
-          <input />
+          <input value={signInEmail} onChange={e => setSignInFormData({
+            email: e.target.value,
+            password: signInPassword,
+          })}/>
         </label>
         <label>
             password
-          <input />
+          <input type="password" value={signInPassword} onChange={e => setSignInFormData({
+            email: signInEmail,
+            password: e.target.value
+          })}/>
         </label>
+        <button>
+            Sign In 
+        </button>
       </form>
     </div></>
   ); 
