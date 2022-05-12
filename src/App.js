@@ -7,33 +7,78 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { logout } from './services/fetch-utils';
+import React, { useState } from 'react';
+import AuthPage from './AuthPage';
+import ListPage from './ListPage';
+import CreatePage from './CreatePage';
+import UpdatePage from './UpdatePage';
 
-async function handleLogout() {
-  await logout();
-}
 
-function App() {
+export default function App() {
+  const [email, setEmail] = useState();
+  const [token, setToken] = useState();
+
+
+
+
+
+  async function handleLogout() {
+    await logout();
+  }
+
   return (
-    <div className="App">
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/create">Create</Link>
-          </li>
-          <li>
-            <Link to="/restaurants">View Restaurants</Link>
-          </li>
-          <li>
-            <button onClick={handleLogout}>Log Out</button>
-          </li>
-        </ul>
-      </nav>
-
-    </div>
+    <Router> 
+      <div className="App">
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/create">Create</Link>
+            </li>
+            <li>
+              <Link to="/restaurants">View Restaurants</Link>
+            </li>
+            <li>
+              <p>{email}</p>
+              <p>{token}</p>
+              <button onClick={handleLogout}>Log Out</button>
+            </li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route exact path="/">
+            {
+              token
+                ? <Redirect to="/restaurants" />
+                : <AuthPage setEmail={setEmail} setToken={setToken} />
+            }
+          </Route>
+          <Route exact path="/restaurants">
+            {
+              token
+                ? <ListPage />
+                : <Redirect to='/' />
+            }
+          </Route>
+          <Route exact path="/create">
+            {
+              token
+                ? <CreatePage />
+                : <Redirect to='/' />
+            }
+          </Route>
+          <Route exact path="/restaurants/:id">
+            {
+              token
+                ? <UpdatePage />
+                : <Redirect to='/' />
+            }
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
-export default App;
