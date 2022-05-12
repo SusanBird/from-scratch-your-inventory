@@ -47,7 +47,7 @@ export default function CreatePage() {
         </label>
         <label>
           Rating
-          <input value={restaurantInTheForm.rating} onChange={e => setRestaurantInTheForm({
+          <input value={restaurantInTheForm.rating} type="number" onChange={e => setRestaurantInTheForm({
             ...restaurantInTheForm,
             rating: e.target.value,
           })} />

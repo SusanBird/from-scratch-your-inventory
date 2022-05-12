@@ -39,3 +39,10 @@ export async function createRestaurant(restaurant) {
   return error || body;
 }
 
+export async function getRestaurants() {
+  const { body, error } = await client
+    .from('Restaurants')
+    .select('*');
+
+  return error || body;
+}
