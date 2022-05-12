@@ -59,6 +59,9 @@ export default function AuthPage({ setEmail, setToken }) {
             password
           <input type="password" value={signUpPassword} onChange={e => setSignUpPassword(e.target.value)}/>
         </label>
+        <button>
+            Sign Up
+        </button>
       </form>
     </div>
     <div>

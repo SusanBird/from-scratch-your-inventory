@@ -30,3 +30,12 @@ export async function signIn(email, password) {
 export function getUser() {
   return client.auth.session();
 }
+
+export async function createRestaurant(restaurant) {
+  const { body, error } = await client
+    .from('Restaurants')
+    .insert(restaurant);
+
+  return error || body;
+}
+
