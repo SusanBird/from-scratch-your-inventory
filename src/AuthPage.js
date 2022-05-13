@@ -48,43 +48,45 @@ export default function AuthPage({ setEmail, setToken }) {
 
 
   return (
-    <><div className='auth-page'>
-      <form onSubmit={handleSignUp}>
-        <h3>Sign Up</h3>
-        <label>
+    <div className='auth'>
+      <div>
+        <form onSubmit={handleSignUp}>
+          <h3>Sign Up</h3>
+          <label>
             email
-          <input value={signUpEmail} onChange={e => setSignUpEmail(e.target.value)}/>
-        </label>
-        <label>
+            <input value={signUpEmail} onChange={e => setSignUpEmail(e.target.value)}/>
+          </label>
+          <label>
             password
-          <input type="password" value={signUpPassword} onChange={e => setSignUpPassword(e.target.value)}/>
-        </label>
-        <button>
+            <input type="password" value={signUpPassword} onChange={e => setSignUpPassword(e.target.value)}/>
+          </label>
+          <button>
             Sign Up
-        </button>
-      </form>
-    </div>
-    <div>
-      <form onSubmit={handleSignIn}>
-        <h3>Sign In</h3>
-        <label>
+          </button>
+        </form>
+      </div>
+      <div>
+        <form onSubmit={handleSignIn}>
+          <h3>Sign In</h3>
+          <label>
             email
-          <input value={signInEmail} onChange={e => setSignInFormData({
-            email: e.target.value,
-            password: signInPassword,
-          })}/>
-        </label>
-        <label>
+            <input value={signInEmail} onChange={e => setSignInFormData({
+              email: e.target.value,
+              password: signInPassword,
+            })}/>
+          </label>
+          <label>
             password
-          <input type="password" value={signInPassword} onChange={e => setSignInFormData({
-            email: signInEmail,
-            password: e.target.value
-          })}/>
-        </label>
-        <button>
+            <input type="password" value={signInPassword} onChange={e => setSignInFormData({
+              email: signInEmail,
+              password: e.target.value
+            })}/>
+          </label>
+          <button>
             Sign In 
-        </button>
-      </form>
-    </div></>
-  ); 
+          </button>
+        </form>
+      </div>
+    </div>
+  );
 }

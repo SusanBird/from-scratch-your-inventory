@@ -15,7 +15,7 @@ export default function ListPage() {
   }, []);
 
   return (
-    <div className='list-page'>
+    <div className='list'>
       {restaurants.map((restaurant, i) => 
         <Item key={restaurant + i} restaurant={restaurant} />
       )}

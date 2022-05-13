@@ -36,21 +36,21 @@ export default function App() {
   return (
     <Router> 
       <div className="App">
-        <nav>
-          <ul>
-            <li>
-              <Link to="/create">Create</Link>
-            </li>
-            <li>
-              <Link to="/restaurants">View Restaurants List</Link>
-            </li>
-            <li>
-              <p>{email}</p>
-              <p>{token}</p>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
-          </ul>
-        </nav>
+        <header> 
+          <nav>
+            <ul>
+              <li>
+                <Link to="/create">Create</Link>
+              </li>
+              <li>
+                <Link to="/restaurants">View Restaurants List</Link>
+              </li>
+              <li>
+                <button onClick={handleLogout}>Log Out</button>
+              </li>
+            </ul>
+          </nav>
+        </header>
         <Switch>
           <Route exact path="/">
             {

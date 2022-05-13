@@ -31,7 +31,7 @@ export default function UpdatePage() {
   }
 
   return (
-    <div className='update-page'>
+    <div className='update'>
       <form onSubmit={handleUpdateSubmit}>
         Update a Restaurant
         <label>
