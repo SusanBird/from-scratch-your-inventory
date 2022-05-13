@@ -138,3 +138,18 @@ select {
   display: flex;
   flex-direction: row;
 }
+
+.email {
+  text-decoration: none;
+  background-color: rgb(173, 142, 101);
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px;
+  text-align: left;
+  border-radius: 15px;
+  max-height: 20px;
+  color: white;
+  position: absolute;
+  left: 5px;
+  top: 25px;
+}

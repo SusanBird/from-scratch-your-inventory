@@ -37,6 +37,7 @@ export default function App() {
     <Router> 
       <div className="App">
         <header> 
+          <p className='email'>{email}</p>
           <nav>
             <ul>
               <li>
