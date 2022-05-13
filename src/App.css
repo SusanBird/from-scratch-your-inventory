@@ -1,38 +1,155 @@
+body, html, #root, .App {
+  height: 100%;
+  background-image: url("bg.jpg");
+  background-size: cover;
+}
+
 .App {
-  text-align: center;
+  display: grid;
+  grid-template-rows: 200px 1fr;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a {
+  text-decoration: none;
+  color: white;
+  text-decoration: double;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App header {
+  display: flex;
+  justify-content: right;
+  align-items:flex-start;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App header ul {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  list-style: none;
+}
+
+.App header li {
+  text-decoration: none;
+  background-color: rgb(173, 142, 101);
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px;
+  text-align: right;
+  border-radius: 15px;
+  max-height: 20px;
+}
+
+.App button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
   color: white;
+  text-decoration: double;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.App main {
+  height: 100%;
+  width: 80%;
+  margin: 0 auto;
+  background-color: white;
+  padding: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.auth, .list, .update, .create {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form { 
+  text-align: right;
+  margin: 100px;
+}
+
+form label {
+  display: block;
+}
+
+form button {
+  margin: 5px;
+}
+
+form label input, form label textarea, form label select  {
+  margin: 5px;
+}
+
+select {
+  width: 150px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.item {
+  border: solid 1px black;
+  text-decoration: none;
+  background-color: rgb(173, 142, 101);
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  border-radius: 15px;
+  max-height: 200px;
+}
+
+.update {
+  width: 60%;
+  margin: 0 auto;
+  border: solid 1px black;
+  text-decoration: none;
+  background-color: rgb(173, 142, 101);
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  border-radius: 15px;
+  max-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create {
+  border: solid 1px black;
+  color: black;
+}
+
+.auth {
+  border: solid 1px black;
+  text-decoration: none;
+  background-color: rgb(173, 142, 101);
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  border-radius: 15px;
+  max-height: 200px;
+  display: flex;
+  flex-direction: row;
+}
+
+.email {
+  text-decoration: none;
+  background-color: rgb(173, 142, 101);
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px;
+  text-align: left;
+  border-radius: 15px;
+  max-height: 20px;
+  color: white;
+  position: absolute;
+  left: 5px;
+  top: 25px;
 }
