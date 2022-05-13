@@ -6,7 +6,7 @@ import {
   Link,
   Redirect,
 } from 'react-router-dom';
-import { getUser, logout } from './services/fetch-utils';
+import { setUser, logout } from './services/fetch-utils';
 import React, { useState, useEffect } from 'react';
 import AuthPage from './AuthPage';
 import ListPage from './ListPage';
@@ -19,7 +19,7 @@ export default function App() {
   const [token, setToken] = useState();
 
   useEffect(() => {
-    const user = getUser();
+    const user = setUser();
 
     if (user) {
       setToken(user.access_token);
@@ -29,6 +29,8 @@ export default function App() {
 
   async function handleLogout() {
     await logout();
+    setEmail('');
+    setToken('');
   }
 
   return (
@@ -37,13 +39,10 @@ export default function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
               <Link to="/create">Create</Link>
             </li>
             <li>
-              <Link to="/restaurants">View Restaurants</Link>
+              <Link to="/restaurants">View Restaurants List</Link>
             </li>
             <li>
               <p>{email}</p>

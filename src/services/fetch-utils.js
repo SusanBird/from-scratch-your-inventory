@@ -26,7 +26,7 @@ export async function signIn(email, password) {
   return user;
 }
 
-export function getUser() {
+export function setUser() {
   return client.auth.session();
 }
 
