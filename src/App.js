@@ -6,8 +6,8 @@ import {
   Link,
   Redirect,
 } from 'react-router-dom';
-import { logout } from './services/fetch-utils';
-import React, { useState } from 'react';
+import { getUser, logout } from './services/fetch-utils';
+import React, { useState, useEffect } from 'react';
 import AuthPage from './AuthPage';
 import ListPage from './ListPage';
 import CreatePage from './CreatePage';
@@ -18,9 +18,14 @@ export default function App() {
   const [email, setEmail] = useState();
   const [token, setToken] = useState();
 
+  useEffect(() => {
+    const user = getUser();
 
-
-
+    if (user) {
+      setToken(user.access_token);
+      setEmail(user.user.email);
+    }
+  }, []);
 
   async function handleLogout() {
     await logout();

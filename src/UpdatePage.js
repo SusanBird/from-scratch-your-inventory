@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { createRestaurant } from './services/fetch-utils';
+import React, { useState, useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import { getRestaurantById, updateRestaurant } from './services/fetch-utils';
 
-export default function CreatePage() {
-  const history = useHistory();
+export default function UpdatePage() {
+  const { push } = useHistory();
+  const { id } = useParams();
   const [restaurantInTheForm, setRestaurantInTheForm] = useState({
     name: '',
     food_type: '',
@@ -12,18 +13,27 @@ export default function CreatePage() {
     price: '$$'
   });
 
-  async function handleCreateSubmit(e) {
+  useEffect(() => {
+    async function load() {
+      const restaurant = await getRestaurantById(id);
+
+      setRestaurantInTheForm(restaurant);
+    }
+    load();
+  }, [id]);
+
+  async function handleUpdateSubmit(e) {
     e.preventDefault();
 
-    await createRestaurant(restaurantInTheForm);
+    await updateRestaurant(id, restaurantInTheForm);
 
-    history.push('/restaurants');
+    push('/restaurants');
   }
 
   return (
-    <div className='create-page'>
-      <form onSubmit={handleCreateSubmit}>
-        Create a Restaurant
+    <div className='update-page'>
+      <form onSubmit={handleUpdateSubmit}>
+        Update a Restaurant
         <label>
           Name
           <input value={restaurantInTheForm.name} onChange={e => setRestaurantInTheForm({
